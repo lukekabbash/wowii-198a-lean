@@ -7,11 +7,11 @@ diff --git a/FormalConjectures/WrittenOnTheWallII/GraphConjecture198a.lean b/For
  A Hamiltonian path is a walk visiting every vertex exactly once.
 +
 +Solved in [Luke Kabbash, *A Hamiltonian-Path Criterion from Bipartite Number and
-+Average Eccentricity*](https://github.com/lukekabbash/wowii-198a-lean/blob/9766921088f9d02017779c63d51133a4aa0c0ba1/paper/main.pdf).
++Average Eccentricity*](https://github.com/lukekabbash/wowii-198a-lean/blob/49f080bbaee83821e9e9744eef14c5acaae2a101/paper/main.pdf).
  -/
 -@[category research open, AMS 5]
 +@[category research solved, AMS 5, formal_proof using lean4 at
-+  "https://github.com/lukekabbash/wowii-198a-lean/blob/9766921088f9d02017779c63d51133a4aa0c0ba1/lean/src/ConditionalMain.lean#L52-L57"]
++  "https://github.com/lukekabbash/wowii-198a-lean/blob/49f080bbaee83821e9e9744eef14c5acaae2a101/lean/src/ConditionalMain.lean#L52-L57"]
  theorem conjecture198a (G : SimpleGraph α) (h : G.Connected)
      (hb : b G ≤ 2 + averageEccentricity G) :
      ∃ a b : α, ∃ p : G.Walk a b, p.IsHamiltonian := by

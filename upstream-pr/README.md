@@ -10,7 +10,7 @@ Two separate routes are provided, and they must not be conflated:
 3. `GraphConjecture198a-formal.patch.in` is the reusable formal-proof template.
 
 The submission-ready patch points to artifact commit
-`9766921088f9d02017779c63d51133a4aa0c0ba1`.
+`49f080bbaee83821e9e9744eef14c5acaae2a101`.
 
 ## Prerequisites
 
