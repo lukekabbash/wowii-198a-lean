@@ -1,0 +1,18 @@
+Title: A Hamiltonian-Path Criterion from Bipartite Number and Average Eccentricity
+Authors: Luke Kabbash
+Subjects: Combinatorics (math.CO)
+MSC classes: 05C45, 05C12
+Comments: Includes a Lean 4 proof of the exact theorem, including the bound b(G) >= 2 rad(G), with no proof placeholders. The manuscript discloses substantial use of generative-AI tools and the limited scope of its prior-solution search; it makes no novelty or priority claim.
+License: CC BY 4.0
+
+Abstract:
+For a finite nontrivial connected simple graph G, let b(G) be the
+maximum order of an induced bipartite subgraph and let ebar(G) be the
+average vertex eccentricity. We prove that b(G) <= 2 + ebar(G) implies
+that G has a Hamiltonian path. This is the statement recorded as
+Written on the Wall II, Conjecture 198a. The proof is driven by the
+tight chain D+1 <= b(G) <= 2+ebar(G) <= D+2. In the first equality
+case, every vertex outside a diametral path belongs to a clique layer
+that can be inserted into the path. In the second, the graph is
+self-centered of diameter two, and the Chvatal--Erdos traceability
+theorem applies.

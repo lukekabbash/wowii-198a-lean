@@ -1,0 +1,25 @@
+WOWII 198a Lean verification
+started_utc: 2026-07-23T20:35:19Z
+Lean (version 4.27.0, arm64-apple-darwin24.6.0, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)
+repository_commit: e751934294a381afd2d5fc1124c5953c8e25f9fa
+command: lean/verify.sh <pinned-checkout>
+source scan: PASS (14 modules)
+Build completed successfully (1784 jobs).
+compiling NeighborhoodArithmetic
+compiling PathGeometry
+compiling CaseOneClassification
+compiling SameIndexClique
+compiling CaseOneCore
+compiling CaseOneAssembly
+compiling LongestPath
+compiling Proof198a
+compiling RadiusBipartite
+compiling RadiusBipartiteBound
+compiling SelfCenteredDiameterTwo
+compiling BranchTwo
+compiling ConditionalMain
+auditing transitive axioms
+'WrittenOnTheWallII.GraphConjecture198a.conjecture198a' depends on axioms: [propext, Classical.choice, Quot.sound]
+axiom audit: PASS (no sorryAx)
+compile: PASS (14 source modules at e751934294a381afd2d5fc1124c5953c8e25f9fa)
+finished_utc: 2026-07-23T20:38:33Z

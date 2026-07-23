@@ -1,0 +1,37 @@
+name: Lean verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh |
+            sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Check out pinned Formal Conjectures
+        run: |
+          git clone --filter=blob:none \
+            https://github.com/google-deepmind/formal-conjectures.git \
+            formal-conjectures
+          git -C formal-conjectures checkout --detach "$(cat lean/PINNED_COMMIT)"
+
+      - name: Resolve pinned dependencies
+        working-directory: formal-conjectures
+        run: lake update
+
+      - name: Compile and audit the proof
+        env:
+          LAKE_BIN: /home/runner/.elan/bin/lake
+        run: ./lean/verify.sh "$GITHUB_WORKSPACE/formal-conjectures"

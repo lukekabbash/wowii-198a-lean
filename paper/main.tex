@@ -1,0 +1,370 @@
+\documentclass[10pt]{article}
+
+% Portable arXiv-compatible Times-family typography.  The Microsoft
+% Times New Roman font is not bundled with TeX Live; mathptmx supplies
+% a metrically familiar Times face and matching mathematics.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{microtype}
+\usepackage[
+  letterpaper,
+  left=1in,
+  right=1in,
+  top=0.72in,
+  bottom=0.68in
+]{geometry}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+]{hyperref}
+\hypersetup{
+  pdftitle={A Hamiltonian-Path Criterion from Bipartite Number and Average Eccentricity},
+  pdfauthor={Luke Kabbash},
+  pdfsubject={Graph theory; Written on the Wall II, Conjecture 198a},
+  pdfkeywords={Hamiltonian path, induced bipartite subgraph, eccentricity, graph radius}
+}
+
+\definecolor{paperink}{HTML}{171717}
+\definecolor{papermuted}{HTML}{565B60}
+\definecolor{paperaccent}{HTML}{294C69}
+\definecolor{paperhairline}{HTML}{AEB5BB}
+\color{paperink}
+\hypersetup{
+  linkcolor=paperaccent,
+  citecolor=paperaccent,
+  urlcolor=paperaccent
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6.4pt}
+\linespread{1.04}
+\setlist{topsep=2pt,partopsep=0pt}
+
+\titleformat{\section}[block]
+  {\normalfont\bfseries\fontsize{13.5}{16.4}\selectfont\color{paperink}}
+  {\thesection.}{0.45em}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titleformat{name=\section,numberless}[block]
+  {\normalfont\bfseries\fontsize{13.5}{16.4}\selectfont\color{paperink}}
+  {}{0pt}{}
+\titleformat{\subsection}[block]
+  {\normalfont\itshape\fontsize{11.2}{14}\selectfont\color{paperink}}
+  {\thesubsection}{0.45em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{4.5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{%
+  \sffamily\fontsize{7}{8}\selectfont\color{papermuted}%
+  HAMILTONIAN-PATH CRITERION}
+\fancyhead[R]{%
+  \sffamily\fontsize{7}{8}\selectfont\color{papermuted}\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{\color{paperhairline}\leaders\hrule height
+  \headrulewidth\hfill}}
+\setlength{\headheight}{17.6pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{%
+    \sffamily\fontsize{7}{8}\selectfont\color{papermuted}\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\renewenvironment{abstract}
+  {\begin{list}{}{%
+     \setlength{\leftmargin}{0.22in}%
+     \setlength{\rightmargin}{0.22in}%
+   }\item\relax}
+  {\end{list}}
+
+\IfFileExists{artifact-status.tex}
+  {\input{artifact-status.tex}}
+  {\newif\ifleanverified\leanverifiedfalse
+   \newcommand{\leanstatus}{Formal verification status was not supplied.}}
+
+\newtheoremstyle{paperplain}
+  {0pt}
+  {0pt}
+  {\itshape}
+  {0pt}
+  {\bfseries}
+  {.}
+  {\newline}
+  {}
+\theoremstyle{paperplain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\ecc}{\operatorname{ecc}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\avg}{\operatorname{avg}}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+  \thispagestyle{plain}
+  \begin{center}
+    \vspace*{6pt}
+    {\bfseries\fontsize{23.5}{26.5}\selectfont
+      A Hamiltonian-Path Criterion from\\
+      Bipartite Number and Average Eccentricity\par}
+    \vspace{7pt}
+    {\itshape\fontsize{11.2}{14.2}\selectfont\color{papermuted}
+      A proof of Written on the Wall II, Conjecture 198a\par}
+    \vspace{7pt}
+    {\fontsize{10.2}{13}\selectfont
+      Luke Kabbash \textbar{} GPT-5.6 Sol\par}
+    \vspace{1pt}
+    {\fontsize{9.2}{12}\selectfont\color{papermuted}23 July 2026\par}
+  \end{center}
+  \vspace{10pt}
+  {\color{paperink}\hrule height 0.75pt}
+  \vspace{10pt}
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\small
+\noindent\textbf{Abstract.}\enspace
+For a finite nontrivial connected simple graph \(G\), let \(b(G)\) be
+the maximum order of an induced bipartite subgraph and let
+\(\overline{\ecc}(G)\) be the average vertex eccentricity.  We prove
+that
+\[
+        b(G)\leq 2+\overline{\ecc}(G)
+        \quad\Longrightarrow\quad
+        G\ \text{has a Hamiltonian path}.
+\]
+This is the statement recorded as Written on the Wall II,
+Conjecture~198a.  The proof is driven by the tight chain
+\(D+1\leq b(G)\leq 2+\overline{\ecc}(G)\leq D+2\), where
+\(D=\diam(G)\).  In the first equality case, every vertex outside a
+diametral path belongs to a clique layer that can be inserted into
+that path.  In the second, the graph is self-centered of diameter two,
+and the Chv\'atal--Erd\H{o}s traceability theorem applies.
+\end{abstract}
+
+\section{Statement and notation}
+
+All graphs in this note are finite and simple.  For a connected graph
+\(G\), write
+\[
+  D=\diam(G),\qquad
+  r=\rad(G),\qquad
+  \overline{\ecc}(G)
+    =\frac{1}{|V(G)|}\sum_{v\in V(G)}\ecc_G(v).
+\]
+The \emph{bipartite number} \(b(G)\) is the largest cardinality of a
+set \(S\subseteq V(G)\) for which the induced graph \(G[S]\) is
+bipartite.  A graph is \emph{traceable} if it has a Hamiltonian path.
+
+\vspace{1pt}
+\noindent{\color{paperink}\rule{\linewidth}{0.75pt}}
+\vspace{-2pt}
+
+\begin{theorem}[Written on the Wall II, Conjecture 198a]
+\label{thm:main}
+Let \(G\) be a nontrivial connected graph.  If
+\[
+                   b(G)\leq 2+\overline{\ecc}(G),
+\]
+then \(G\) is traceable.
+\end{theorem}
+
+\vspace{-3pt}
+\noindent{\color{paperink}\rule{\linewidth}{0.75pt}}
+\vspace{2pt}
+
+We use two classical facts.  First,
+\begin{equation}
+                         b(G)\geq 2r ,
+\label{eq:radius-bipartite}
+\end{equation}
+as recorded by DeLaVi\~na, Pepper, and Waller
+\cite[Theorem~2]{DeLaVinaPepperWaller2007}.  Second, the
+Chv\'atal--Erd\H{o}s path theorem says that an \(s\)-connected graph
+with no independent set of \(s+2\) vertices is traceable
+\cite[Theorem~2]{ChvatalErdos1972}.
+
+\clearpage
+\section{Proof}
+
+Choose a diametral geodesic
+\[
+                         P=v_0v_1\cdots v_D .
+\]
+A geodesic is induced, so \(P\) is an induced bipartite graph of order
+\(D+1\).  Since every eccentricity is at most \(D\),
+\begin{equation}
+       D+1\leq b(G)
+       \leq 2+\overline{\ecc}(G)
+       \leq D+2.
+\label{eq:chain}
+\end{equation}
+Because \(b(G)\) is integral, only two cases remain.
+
+\subsection*{Case 1: \(b(G)=D+1\)}
+
+Fix \(x\notin V(P)\).  The induced graph on \(V(P)\cup\{x\}\) has
+order \(D+2>b(G)\), hence is not bipartite.  Thus \(x\) has neighbors
+on \(P\) of both parities.  On the other hand, any two \(P\)-neighbors
+\(v_i,v_k\) of \(x\) satisfy \(|i-k|\leq2\): otherwise
+\(v_i x v_k\) would shorten the corresponding section of the
+geodesic \(P\).
+
+Let \(j\) be the least index for which \(xv_j\in E(G)\).  The preceding
+paragraph gives
+\begin{equation}
+       N_G(x)\cap V(P)
+       \in\bigl\{\{v_j,v_{j+1}\},
+                   \{v_j,v_{j+1},v_{j+2}\}\bigr\},
+\label{eq:attachment}
+\end{equation}
+where the second alternative is omitted when \(j+2>D\).  For
+\(0\leq j<D\), let \(X_j\) consist of the vertices outside \(P\) whose
+least neighbor index is \(j\).
+
+Each \(X_j\) is a clique.  Indeed, if distinct \(x,y\in X_j\) were
+nonadjacent, then
+\[
+       \bigl(V(P)\setminus\{v_{j+1}\}\bigr)\cup\{x,y\}
+\]
+would induce a bipartite graph of order \(D+2\).  To see the
+bipartition directly, retain the alternating coloring of \(P\):
+the only remaining possible \(P\)-neighbors of \(x\) or \(y\) are
+\(v_j\) and \(v_{j+2}\), which have the same color, and assign both
+\(x\) and \(y\) the opposite color.  This contradicts \(b(G)=D+1\).
+
+Now order the vertices as
+\begin{equation}
+            v_0,\ X_0,\ v_1,\ X_1,\ \ldots,\
+            v_{D-1},\ X_{D-1},\ v_D.
+\label{eq:ham-order}
+\end{equation}
+using any order inside each \(X_j\) and simply omitting empty layers.
+Consecutive vertices are adjacent: every \(X_j\) is a clique, and
+every member of \(X_j\) is adjacent to both \(v_j\) and \(v_{j+1}\).
+All vertices occur exactly once, so \eqref{eq:ham-order} is a Hamiltonian
+path.
+
+\subsection*{Case 2: \(b(G)=D+2\)}
+
+Equality throughout the right half of \eqref{eq:chain} gives
+\(\overline{\ecc}(G)=D\).  Every vertex therefore has eccentricity
+\(D\), so \(G\) is self-centered and \(r=D\).  Combining this with
+\eqref{eq:radius-bipartite} yields
+\[
+                         2D=2r\leq b(G)=D+2,
+\]
+and hence \(D\leq2\).  The case \(D=1\) is impossible: a nontrivial
+diameter-one graph is complete and has bipartite number \(2\), not
+\(D+2=3\).  Consequently,
+\begin{equation}
+                         D=r=2,\qquad b(G)=4.
+\label{eq:diam-two}
+\end{equation}
+
+The graph \(G\) has no cut vertex.  Otherwise, let \(c\) be a cut
+vertex.  For any \(w\ne c\), choose \(y\) in a component of \(G-c\)
+different from the component containing \(w\).  Every \(w\)-\(y\)
+path passes through \(c\), and a path of length at most two must
+therefore be \(wcy\).  Hence every vertex other than \(c\) is adjacent
+to \(c\), giving \(\ecc_G(c)=1\), contrary to self-centeredness with
+radius two.  Since \(D=2\) also implies \(|V(G)|\geq3\), the graph is
+2-connected.
+
+Finally, if \(I\) is a maximum independent set, then \(I\neq V(G)\)
+because \(G\) is connected and nontrivial.
+Adding any vertex outside \(I\) produces an induced bipartite graph,
+so \(b(G)\geq |I|+1\).  By \eqref{eq:diam-two},
+\(\alpha(G)\leq3\).  Hence this 2-connected graph has no independent
+set of four vertices.  The Chv\'atal--Erd\H{o}s path theorem, with
+\(s=2\), supplies a Hamiltonian path.  This completes the proof of
+Theorem~\ref{thm:main}. \qed
+
+\section{Formalization and reproducibility}
+
+The theorem is represented in the Formal Conjectures repository over
+a finite type \(\alpha\) by a connected simple graph \(G\), with
+\(b(G)\) coerced to \(\mathbb{R}\) and average eccentricity defined as
+a real average.  The proof artifact accompanying this manuscript is
+organized around the following independently checkable interfaces:
+\begin{enumerate}[leftmargin=2.1em,itemsep=2pt]
+  \item a diametral geodesic and the lower bound \(D+1\leq b(G)\);
+  \item the integral dichotomy \(b(G)\in\{D+1,D+2\}\);
+  \item the attachment and clique-layer lemmas
+        \eqref{eq:attachment};
+  \item the self-centered diameter-two reduction; and
+  \item a direct longest-path traceability endpoint matching the repository
+        statement:
+        \[
+          \exists\,a\,b,\quad
+          \exists p:G.\mathrm{Walk}\ a\ b,\quad
+          p.\mathrm{IsHamiltonian}.
+        \]
+\end{enumerate}
+
+All of these components, including both equality branches and the classical
+inequality \eqref{eq:radius-bipartite}, are checked in Lean without proof
+placeholders. Their top-level composition has the exact hypotheses and
+conclusion of the repository conjecture.
+
+\paragraph{Artifact status.}
+\ifleanverified
+\leanstatus
+\else
+\leanstatus\  This manuscript asserts the mathematical proof above,
+but it does not by itself assert that a Lean kernel has accepted the
+entire development.  The distributed verification log and checksum
+manifest are authoritative for that separate claim.
+\fi
+
+\paragraph{Research provenance and generative-AI use disclosure.}
+I used a near-autonomous, iteratively prompted research workflow to identify
+and pursue this problem.  I began by examining other open problems reported
+as solved during the preceding several days, comparing their statements and
+proof strategies to assess which nearby conjectures might be approachable.
+The resulting model outputs placed this conjecture among comparatively
+steeper targets, and I selected it for sustained work.
+
+I then used GPT-5.6 Sol in local Codex at extra-high and ultra reasoning
+settings, cloud-hosted ChatGPT work, and individual ChatGPT 5.6 Pro sessions
+for iterative research, proof development, Lean formalization, and
+verification, continuing until the exact theorem passed the Lean kernel.
+GPT-5.6 Sol at extra-high reasoning was used for repository preparation;
+Claude Fable 5 and Claude Sonnet 5 were used for limited supplementary
+searches.  Model names in the displayed byline and this disclosure identify
+software used in the workflow, not independent agency, authorship, or
+responsibility.  I am the sole human author and take responsibility for the
+claims and submitted material.
+
+\section*{Prior-solution search and research status}
+
+The statement appears as Conjecture~198a in Written on the Wall II
+\cite{DeLaVinaWOWII} and in the Formal Conjectures snapshot
+\cite{FormalConjectures198a}.  A targeted search completed on 23 July
+2026 covered the current upstream statement, its open and closed issue
+and pull-request history, public GitHub code indexed under the exact
+theorem identifier, and exact-phrase web queries.  It found copies of
+the open conjecture and benchmark tasks, but no evidence in the searched
+sources of a proof or verified formalization predating this work.  The
+search was not an exhaustive literature review, does not establish
+worldwide novelty or priority, and supports no claim of a first proof.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

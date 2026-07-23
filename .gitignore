@@ -1,0 +1,57 @@
+# Operating-system files
+.DS_Store
+.AppleDouble
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local secrets and environments
+.env
+.env.*
+!.env.example
+.direnv/
+.venv/
+venv/
+
+# Lean and Lake build products
+.elan/
+.lake/
+lake-packages/
+formal-conjectures/
+*.olean
+*.ilean
+*.c
+*.o
+*.a
+*.so
+*.dylib
+
+# LaTeX intermediates (the verified final PDF is intentionally tracked)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+!verification/*.log
+*.out
+*.synctex.gz
+_minted-*/
+
+# Language/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+
+# Local temporary output
+tmp/
+result
+result-*
