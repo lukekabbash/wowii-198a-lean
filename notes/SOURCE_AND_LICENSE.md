@@ -4,9 +4,9 @@
   upstream Formal Conjectures repository. See `LICENSE`.
 - The manuscript and prose documentation are distributed under Creative
   Commons Attribution 4.0 International. See `LICENSE-DOCS.md`.
-- Luke Kabbash is the sole human author. The repository and manuscript
-  disclose the generative-AI tools used in research, formalization, and
-  preparation; model names do not denote authorship or responsibility.
+- Authorship is attributed to Luke Kabbash. The repository and manuscript
+  disclose the autonomous generative-AI research workflow and the systems
+  used as tools in research, formalization, verification, and preparation.
 - Microsoft Times New Roman is not redistributed. The PDF embeds Nimbus
   Roman, the standard redistributable Times-family face selected by
   `mathptmx`.

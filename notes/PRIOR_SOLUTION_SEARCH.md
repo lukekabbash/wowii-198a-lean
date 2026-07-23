@@ -21,6 +21,10 @@ statement remained categorized as `research open` with a `sorry` proof:
 
 <https://github.com/google-deepmind/formal-conjectures/blob/e751934294a381afd2d5fc1124c5953c8e25f9fa/FormalConjectures/WrittenOnTheWallII/GraphConjecture198a.lean>
 
+The upstream issue and pull-request searches and the statement status were
+rechecked immediately before final artifact preparation on 23 July 2026. The
+upstream commit and findings remained unchanged.
+
 ## Findings
 
 No matching upstream pull request or issue was found. Public GitHub code

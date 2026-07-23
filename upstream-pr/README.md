@@ -13,14 +13,20 @@ Two separate routes are provided, and they must not be conflated:
 - Rebase or recreate the patch against the current upstream `main`.
 - Repeat the dated prior-solution search recorded in
   `notes/PRIOR_SOLUTION_SEARCH.md`.
+- Open the required upstream issue, then open the linked non-draft pull
+  request without waiting for separate pre-approval.
 - Publish the paper at an immutable URL.
-- Ask a maintainer whether a solved-status PR based on a mathematical proof
-  is desired.
 - Use the formal-proof route only while the exact upstream theorem compiles
   with no `sorry`, `admit`, `sorryAx`, or new unreviewed axioms.
 - Review the repository’s current `AGENTS.md`, contribution guide, and
   formatting requirements.
-- Sign the Google CLA when prompted.
+- Ensure the Google CLA check passes on the pull request.
+- Write the issue, pull-request description, review replies, and any Zulip
+  message in the contributor's own words.
+- Disclose the generative-AI systems used and how they were used. If the
+  contribution contains substantial LLM-generated code, add the
+  `LLM-generated` label by posting the exact comment `LLM-generated`, as
+  required by the current contribution policy.
 
 ## Apply the metadata patch
 
@@ -49,40 +55,21 @@ feat(WOWII): mark Conjecture 198a solved
 feat(WOWII): mark Conjecture 198a solved
 ```
 
-## PR body template
+## Pull-request description checklist
 
-```markdown
-## Summary
+The contributor should describe the submission in their own words. The
+description should cover:
 
-Marks Written on the Wall II, Conjecture 198a as solved and links a
-mathematical proof at an immutable URL.
+- the exact conjecture and proposed solved status;
+- the three mathematical ingredients used in the proof;
+- immutable URLs for the paper and exact Lean theorem;
+- the Lean version, pinned upstream commit, verification command, and result;
+- the scope and limitation of the prior-solution search; and
+- the generative-AI systems used and their roles.
 
-The proof uses
-
-1. `diam(G) + 1 ≤ b(G) ≤ 2 + averageEccentricity(G) ≤ diam(G) + 2`;
-2. a clique-layer decomposition along a diametral path when
-   `b(G) = diam(G) + 1`; and
-3. the classical bound `b(G) ≥ 2 * radius(G)` and a self-centered
-   diameter-two reduction, followed by the Chvátal–Erdős path theorem,
-   when `b(G) = diam(G) + 2`.
-
-## Verification
-
-- Mathematical proof: <IMMUTABLE_PAPER_URL>
-- Checked Lean components: <OPTIONAL_IMMUTABLE_ARTIFACT_URL>
-- Lean version: 4.27.0
-- Base commit: <UPSTREAM_BASE_COMMIT>
-- Command: `lake --wfail build`
-- Result: pass
-
-## Checklist
-
-- [ ] Paper URL is immutable and opens at the proof
-- [ ] Formal-verification claim links the immutable checked artifact
-- [ ] Current upstream open and closed PRs checked
-- [ ] Formatting and full build pass
-- [ ] CLA signed
-```
+Before submission, confirm that the immutable URLs open, the upstream issue is
+linked, the current open and closed pull requests have been checked, the full
+build passes, and the CLA check is expected to pass.
 
 ## Gate for the formal-proof template
 

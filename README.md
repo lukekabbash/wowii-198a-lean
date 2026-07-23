@@ -48,29 +48,26 @@ inspects the PDF in a temporary directory.
 - `verification/` — captured Lean and PDF verification reports.
 - `MANIFEST.sha256` — checksums for the staged archive contents.
 
-## Research provenance and generative-AI use disclosure
+## Research process and use of generative AI
 
-I used a near-autonomous, iteratively prompted research workflow to identify
-and pursue this problem. I began by examining other open problems reported as
-solved during the preceding several days, comparing their statements and proof
-strategies to assess which nearby conjectures might be approachable. The
-resulting model outputs placed this conjecture among comparatively steeper
-targets, and I selected it for sustained work.
+I used an autonomous generative-AI research workflow to identify and
+investigate Conjecture 198a. The workflow began with a comparative analysis of
+problems reported as solved during the preceding several days, their
+statements, and the proof strategies used. This analysis was used to assess
+related open conjectures, after which I selected Conjecture 198a for sustained
+investigation.
 
-I then used GPT-5.6 Sol in local Codex at extra-high and ultra reasoning
-settings, cloud-hosted ChatGPT work, and individual ChatGPT 5.6 Pro sessions
-for iterative research, proof development, Lean formalization, and
-verification, continuing until the exact theorem passed the Lean kernel.
-GPT-5.6 Sol at extra-high reasoning was used for repository preparation;
-Claude Fable 5 and Claude Sonnet 5 were used for limited supplementary
-searches.
+OpenAI GPT-5.6 Sol was used through local Codex at extra-high and ultra
+reasoning settings for exploratory research, proof development, Lean
+formalization, verification, and repository preparation. Cloud-hosted ChatGPT
+workflows and individual ChatGPT 5.6 Pro sessions were also used for research,
+proof development, and verification. Claude Fable 5 and Claude Sonnet 5 were
+used for limited supplementary searches.
 
-Model names in the displayed byline and this disclosure identify software
-used in the workflow, not independent agency, authorship, or responsibility.
-I am the sole human author and take responsibility for the claims and
-submitted material. Lean kernel acceptance establishes that the stated proof
-terms typecheck in the pinned environment; it does not replace independent
-mathematical review.
+These systems are disclosed as research tools and are not authors. I take
+responsibility for the manuscript and submitted material. Lean kernel
+acceptance establishes that the stated proof terms typecheck in the pinned
+environment; it does not replace independent mathematical review.
 
 ## Prior-solution search and research status
 

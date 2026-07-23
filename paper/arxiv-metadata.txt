@@ -2,7 +2,7 @@ Title: A Hamiltonian-Path Criterion from Bipartite Number and Average Eccentrici
 Authors: Luke Kabbash
 Subjects: Combinatorics (math.CO)
 MSC classes: 05C45, 05C12
-Comments: Includes a Lean 4 proof of the exact theorem, including the bound b(G) >= 2 rad(G), with no proof placeholders. The manuscript discloses substantial use of generative-AI tools and the limited scope of its prior-solution search; it makes no novelty or priority claim.
+Comments: Includes a Lean 4 proof of the exact theorem, including the bound b(G) >= 2 rad(G), with no proof placeholders. The manuscript discloses an autonomous generative-AI research workflow and the limited scope of its prior-solution search; it makes no novelty or priority claim.
 License: CC BY 4.0
 
 Abstract:
