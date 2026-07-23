@@ -25,4 +25,6 @@ sed \
 
 git -C "$REPO_ROOT" apply --check "$WORK_DIR/status.patch"
 git -C "$REPO_ROOT" apply --check "$WORK_DIR/formal.patch"
-printf 'patch templates: PASS\n'
+git -C "$REPO_ROOT" apply --check \
+  "$ROOT_DIR/upstream-pr/GraphConjecture198a-formal.patch"
+printf 'submission patch and templates: PASS\n'

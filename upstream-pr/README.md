@@ -2,11 +2,15 @@
 
 Two separate routes are provided, and they must not be conflated:
 
-1. `GraphConjecture198a-status.patch.in` marks the conjecture solved and
-   links the mathematical paper.
-2. `GraphConjecture198a-formal.patch.in` additionally records a
-   `formal_proof` URL. Use it after publishing this zero-placeholder exact
-   Lean proof at an immutable URL.
+1. `GraphConjecture198a-formal.patch` is the submission-ready patch. It marks
+   the conjecture solved and links the paper and exact Lean theorem at
+   immutable URLs.
+2. `GraphConjecture198a-status.patch.in` is a fallback template that marks the
+   conjecture solved and links only the mathematical paper.
+3. `GraphConjecture198a-formal.patch.in` is the reusable formal-proof template.
+
+The submission-ready patch points to artifact commit
+`9766921088f9d02017779c63d51133a4aa0c0ba1`.
 
 ## Prerequisites
 
@@ -30,8 +34,15 @@ Two separate routes are provided, and they must not be conflated:
 
 ## Apply the metadata patch
 
-For the current status-only route, copy the template and replace both
-placeholders:
+For the submission-ready formal-proof route:
+
+```sh
+git apply --check /path/to/GraphConjecture198a-formal.patch
+git apply /path/to/GraphConjecture198a-formal.patch
+lake --wfail build
+```
+
+For the status-only fallback, copy the template and replace the placeholder:
 
 ```sh
 cp upstream-pr/GraphConjecture198a-status.patch.in /tmp/GraphConjecture198a.patch

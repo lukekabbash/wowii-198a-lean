@@ -1,6 +1,6 @@
 WOWII 198a PDF verification
-verified_utc: 2026-07-23T22:20:02Z
-dfedde8671bba7705c8d795b9140d1546dec3e310ed39137cf3b5560f005347b  paper/main.pdf
+verified_utc: 2026-07-23T22:40:46Z
+41ef3fb967cdc77d9a4ed340ea3b1db5007bb5430beacd435e1da56e651d4941  paper/main.pdf
 Title:           A Hamiltonian-Path Criterion from Bipartite Number and Average Eccentricity
 Subject:         Graph theory; Written on the Wall II, Conjecture 198a
 Keywords:        Hamiltonian path, induced bipartite subgraph, eccentricity, graph radius
@@ -19,10 +19,10 @@ Pages:           3
 Encrypted:       no
 Page size:       612 x 792 pts (letter)
 Page rot:        0
-File size:       42821 bytes
+File size:       42965 bytes
 Optimized:       no
 PDF version:     1.5
-extracted_words: 1381
+extracted_words: 1386
 rendered_byline: Luke Kabbash
 latex_warning_scan: PASS
 visual_qa: PASS (3 of 3 pages inspected at 130 dpi; no clipping, overlap, or malformed glyphs)

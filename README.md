@@ -60,9 +60,9 @@ investigation.
 OpenAI GPT-5.6 Sol was used through local Codex at extra-high and ultra
 reasoning settings for exploratory research, proof development, Lean
 formalization, verification, and repository preparation. Cloud-hosted ChatGPT
-workflows and individual ChatGPT 5.6 Pro sessions were also used for research,
-proof development, and verification. Claude Fable 5 and Claude Sonnet 5 were
-used for limited supplementary searches.
+Work sessions using GPT-5.6 Sol Ultra and individual ChatGPT 5.6 Pro sessions
+were also used for research, proof development, and verification. Claude
+Fable 5 and Claude Sonnet 5 were used for limited supplementary searches.
 
 These systems are disclosed as research tools and are not authors. I take
 responsibility for the manuscript and submitted material. Lean kernel
